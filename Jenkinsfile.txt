@@ -15,8 +15,7 @@ pipeline {
  steps {
  echo 'Build maven project'
  sh "mvn install"
- echo 'Maven project has been built 
-successfully'
+ echo 'Maven project has been built successfully'
  }
  }
  stage ("image build") {
@@ -30,8 +29,7 @@ successfully'
  steps {
  echo 'image push to docker hub'
  sh "docker push 2alinfo7/position simulator:${commit_id} "
-echo 'docker image has been pushed 
-successffully'
+echo 'docker image has been pushed successffully'
  }
  }
  stage('deploy') {
@@ -39,7 +37,7 @@ successffully'
  echo 'Image deployment'
  sh "sed -i -r 's|richardchesterwood/k8s fleetman-position simulator:release2|2alinfo7/position simulator:${commit_id}|' workloads.yaml"
 ish 'kubectl apply -f workloads.yaml --
-namespace assign6group1'
+namespace assign6group3'
  echo 'Image has been deployed successfully'
  }
  }
