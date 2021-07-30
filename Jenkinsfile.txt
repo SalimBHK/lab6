@@ -36,8 +36,7 @@ echo 'docker image has been pushed successffully'
  steps {
  echo 'Image deployment'
  sh "sed -i -r 's|richardchesterwood/k8s fleetman-position simulator:release2|2alinfo7/position simulator:${commit_id}|' workloads.yaml"
- sh 'kubectl apply -f workloads.yaml --
-namespace assign6group3'
+ sh 'kubectl apply -f workloads.yaml -- namespace assign6group3'
  echo 'Image has been deployed successfully'
  }
  }
