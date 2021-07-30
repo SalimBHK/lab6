@@ -21,21 +21,21 @@ pipeline {
  stage ("image build") {
  steps {
  echo 'Image building'
- sh "docker build -t jkdevops/position-simulator:${commit_id} ."
+ sh "docker build -t jkdevops/positionsimulator:${commit_id} ."
  echo 'Image has been built successfully'
  }
  }
  stage ("image push") {
  steps {
  echo 'image push to docker hub'
- sh "docker push jkdevops/position-simulator:${commit_id} "
+ sh "docker push jkdevops/positionsimulator:${commit_id} "
 echo 'docker image has been pushed successffully'
  }
  }
  stage('deploy') {
  steps {
  echo 'Image deployment'
- sh "sed -i -r 's|richardchesterwood/k8s fleetman-position-simulator:release2|jkdevops/position-simulator:${commit_id}|' workloads.yaml"
+ sh "sed -i -r 's|richardchesterwood/k8s fleetman-positionsimulator:release2|jkdevops/positionsimulator:${commit_id}|' workloads.yaml"
  sh 'kubectl apply -f workloads.yaml -- namespace assign6group3'
  echo 'Image has been deployed successfully'
  }
