@@ -26,7 +26,7 @@ pipeline {
  }
  }
  stage ("image push") {
- steps i{
+ steps {
  echo 'image push to docker hub'
  sh "docker push 2alinfo7/position-simulator:${commit_id} "
 echo 'docker image has been pushed successffully'
@@ -42,4 +42,4 @@ echo 'docker image has been pushed successffully'
  }
  }
 }
-
+i
