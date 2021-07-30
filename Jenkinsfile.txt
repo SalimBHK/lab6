@@ -21,12 +21,12 @@ pipeline {
  stage ("image build") {
  steps {
  echo 'Image building'
- sh "docker build -t 2alinfo7/position-simulator:${commit_id} ."
+ sh "docker build -t Devops/target/position-simulator:${commit_id} ."
  echo 'Image has been built successfully'
  }
  }
  stage ("image push") {
- steps {
+ steps i{
  echo 'image push to docker hub'
  sh "docker push 2alinfo7/position-simulator:${commit_id} "
 echo 'docker image has been pushed successffully'
